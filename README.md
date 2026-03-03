@@ -1,50 +1,40 @@
-# React + TypeScript + Vite
+# Web LAB Projesi (LAB-1 / LAB-2 / LAB-3)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Hakkında
+Bu repo, **Web Tasarımı ve Programlama** dersi kapsamında **Vite + React + TypeScript** kullanılarak geliştirilmiş tek sayfalık kişisel portföy uygulamasıdır.
 
-Currently, two official plugins are available:
+- **LAB-1**: Ortam kurulumu, Git iş akışı, kişisel bilgilerin eklenmesi
+- **LAB-2**: Semantik HTML, erişilebilirlik (a11y), iletişim formu
+- **LAB-3**: Modern CSS, responsive layout (Flex/Grid), design tokens, ekran görüntüleri
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Geliştirici
+- **Ad Soyad:** Muhammed Eren Aydın
+- **Öğrenci No:** 230541034
+- **E-posta:** 230541034@firat.edu.tr
 
-## Expanding the ESLint configuration
+## Kullanılan Teknolojiler
+- React 18
+- TypeScript
+- Vite
+- Modern CSS (Flexbox, Grid, CSS Variables)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Kurulum
+```bash
+npm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+## Çalıştırma
+```bash
+npm run dev
 ```
+
+Tarayıcıda `http://localhost:5173` adresini aç.
+
+## Ekran Görüntüleri (LAB-3)
+- `screenshots/screenshot-mobile.png` (375px)
+- `screenshots/screenshot-tablet.png` (768px)
+- `screenshots/screenshot-desktop.png` (1280px)
+
+## Notlar
+- **CSS kararları**: `CSS-KARARLARI.md`
+- **Lighthouse raporu (varsa)**: `lighthouse-report.json`

@@ -10,7 +10,7 @@ function App() {
       
       <header>
         <div className="container header-inner">
-          <span className="site-title">Muhammed Eren Aydin</span>
+          <span className="site-title">Muhammed Eren Aydın</span>
           <nav aria-label="Ana navigasyon">
             <ul>
               <li><a href="#hakkimda">Hakkimda</a></li>
@@ -27,12 +27,16 @@ function App() {
           <h2>Hakkimda</h2>
           <div className="about-content">
             <figure>
-              <img src="https://via.placeholder.com/200" alt="Muhammed Eren Aydin'in vesikalik fotografi" />
-              <figcaption>Muhammed Eren Aydin</figcaption>
+              <img src="https://via.placeholder.com/200" alt="Muhammed Eren Aydın'ın vesikalik fotografi" />
+              <figcaption>Muhammed Eren Aydın</figcaption>
             </figure>
             <div>
-              <p><strong>Ad Soyad:</strong> Muhammed Eren Aydin</p>
-              <p><strong>Ogrenci No:</strong> 220202023</p>
+              <p><strong>Ad Soyad:</strong> Muhammed Eren Aydın</p>
+              <p><strong>Ogrenci No:</strong> 230541034</p>
+              <p>
+                <strong>E-posta:</strong>{' '}
+                <a href="mailto:230541034@firat.edu.tr">230541034@firat.edu.tr</a>
+              </p>
               <p>Merhaba! Web geliştirme dünyasına ilk adımımı atıyorum. Öğrenmeye ve gelişmeye açık bir yazılım meraklısıyım.</p>
               <h3>Kullandigim Teknolojiler</h3>
               <ul className="skill-tags" role="list" aria-label="Beceri etiketleri">
@@ -128,7 +132,7 @@ function App() {
 
       <footer>
         <div className="container">
-          <p>&copy; 2025 Muhammed Eren Aydin. Tum haklari saklidir.</p>
+          <p>&copy; 2025 Muhammed Eren Aydın. Tum haklari saklidir.</p>
         </div>
       </footer>
     </>
