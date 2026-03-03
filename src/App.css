@@ -1,174 +1,347 @@
-/* Genel Sifirlama */
-* {
+/* ========================================
+   MOBILE-FIRST VARSAYILAN (0-639px)
+   ======================================== */
+
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
   line-height: 1.6;
-  background-color: #f4f4f9;
-  color: #333;
-}
-
-/* Navigasyon & Header */
-header {
-  background-color: #2c3e50;
-  color: white;
-  padding: 1rem 0;
-}
-
-header h1 {
-  margin-bottom: 0.5rem;
-  color: white;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-nav a:hover, nav a:focus {
-  text-decoration: underline;
-}
-
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-/* Bolumler */
-section {
-  padding: 3rem 0;
-  border-bottom: 1px solid #ddd;
-}
-
-h2 {
-  color: #2c3e50;
-  margin-bottom: 1.5rem;
-}
-
-h3 {
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-  color: #34495e;
-}
-
-/* Proje Kartlari */
-article {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  color: var(--color-text);
+  background-color: var(--color-bg);
 }
 
 img {
   max-width: 100%;
   height: auto;
   display: block;
-  margin-top: 1rem;
-  border-radius: 4px;
 }
 
-figure {
-  margin-bottom: 1rem;
-}
-
-/* Skip link: normalde gizli, Tab ile gorunur */
+/* ===== SKIP LINK ===== */
 .skip-link {
   position: absolute;
   top: -100px;
   left: 0;
-  background: #1E3A8A;
-  color: white;
-  padding: 8px 16px;
+  background: var(--color-primary);
+  color: var(--color-bg);
+  padding: var(--space-sm) var(--space-md);
   z-index: 100;
   text-decoration: none;
+  border-radius: 0 0 var(--radius-md) 0;
 }
-
-.skip-link:focus {
-  top: 0;
-}
+.skip-link:focus { top: 0; }
 
 /* Focus gostergesi -- ASLA kaldirma */
 :focus {
-  outline: 2px solid #2563EB;
+  outline: 2px solid var(--color-secondary);
   outline-offset: 2px;
 }
 
-/* Form stilleri */
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+/* ===== HEADER ===== */
+header {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  padding: var(--space-md) 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.site-title {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-bg);
+}
+
+/* ===== NAV ===== */
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: var(--space-xs);
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+nav a {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-md);
+  color: var(--color-bg);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: background var(--transition-fast), color var(--transition-fast);
+  font-size: var(--text-sm);
+}
+
+nav a:hover,
+nav a:focus {
+  background-color: var(--color-secondary);
+}
+
+/* ===== SECTIONS ===== */
+section {
+  padding: var(--space-xl) var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+section h2 {
+  font-size: var(--text-2xl);
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+h3 {
+  font-size: var(--text-xl);
+  color: var(--color-text);
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+/* ===== HAKKIMDA ===== */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  text-align: center;
+}
+
+.about-content figure {
+  max-width: 200px;
+  flex-shrink: 0;
+}
+
+.about-content img {
+  border-radius: var(--radius-full);
+  aspect-ratio: 1;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* ===== SKILL TAGS ===== */
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  list-style: none;
+  padding: 0;
+  margin-top: var(--space-md);
+  justify-content: center;
+}
+
+.skill-tags li {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+}
+
+/* ===== PROJECT GRID ===== */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-xl);
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.project-card h3,
+.project-card p,
+.project-card .skill-tags {
+  padding: 0 var(--space-lg);
+}
+
+.project-card h3 {
+  margin-top: var(--space-md);
+  font-size: var(--text-lg);
+}
+
+.project-card p {
+  color: var(--color-muted);
+  flex-grow: 1;
+  margin-bottom: var(--space-sm);
+}
+
+.project-card .skill-tags {
+  padding-bottom: var(--space-lg);
+  margin-top: auto;
+  justify-content: flex-start;
+}
+
+/* ===== FORM ===== */
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-md);
 }
 
 fieldset {
-  padding: 1.5rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: white;
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 legend {
   font-weight: bold;
-  padding: 0 0.5rem;
+  padding: 0 var(--space-sm);
 }
 
 label {
   display: block;
-  margin-bottom: 0.25rem;
-  font-weight: 500;
+  margin-bottom: var(--space-xs);
+  font-weight: 600;
 }
 
 input, textarea, select {
   width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
   font-family: inherit;
+  font-size: var(--text-base);
+  transition: border-color var(--transition-fast);
 }
 
-textarea {
-  resize: vertical;
+input:focus, textarea:focus, select:focus {
+  border-color: var(--color-primary);
 }
+
+textarea { resize: vertical; }
 
 button[type="submit"] {
-  background-color: #2563EB;
-  color: white;
+  width: 100%;
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--color-primary);
+  color: var(--color-bg);
   border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  font-size: 1rem;
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
   cursor: pointer;
-  margin-top: 1rem;
+  transition: background var(--transition-fast);
+  margin-top: var(--space-sm);
 }
 
-button[type="submit"]:hover {
-  background-color: #1d4ed8;
+button[type="submit"]:hover,
+button[type="submit"]:focus {
+  background: var(--color-secondary);
 }
 
 .error-msg {
-  color: #d32f2f;
-  font-size: 0.85rem;
+  color: var(--color-error);
+  font-size: var(--text-sm);
   display: block;
-  margin-top: 0.25rem;
-  min-height: 1.25rem; /* Ayrılan sabit boşluk */
+  margin-top: var(--space-xs);
+  min-height: 1.25rem;
 }
 
-/* Footer */
+/* ===== FOOTER ===== */
 footer {
   text-align: center;
-  padding: 2rem 0;
-  background-color: #f9f9f9;
-  color: #666;
-  margin-top: 2rem;
+  padding: var(--space-xl) var(--space-md);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+}
+
+/* ========================================
+   TABLET (640px ve uzeri)
+   ======================================== */
+@media (min-width: 640px) {
+  section {
+    padding: var(--space-2xl) var(--space-xl);
+  }
+
+  .header-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav ul {
+    justify-content: flex-end;
+  }
+
+  .about-content {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .skill-tags {
+    justify-content: flex-start;
+  }
+
+  button[type="submit"] {
+    width: auto;
+  }
+}
+
+/* ========================================
+   MASAUSTU (1024px ve uzeri)
+   ======================================== */
+@media (min-width: 1024px) {
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  section {
+    padding: var(--space-3xl) var(--space-xl);
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  nav a {
+    font-size: var(--text-base);
+  }
 }
