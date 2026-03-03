@@ -27,7 +27,10 @@ function App() {
           <h2>Hakkimda</h2>
           <div className="about-content">
             <figure>
-              <img src="https://via.placeholder.com/200" alt="Muhammed Eren Aydın'ın vesikalik fotografi" />
+              <img
+                src="https://www.muhammederenaydın.com/home%20page/profile.jpg"
+                alt="Muhammed Eren Aydın'ın profil fotografi"
+              />
               <figcaption>Muhammed Eren Aydın</figcaption>
             </figure>
             <div>
