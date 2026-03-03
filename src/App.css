@@ -1,42 +1,174 @@
-#root {
-  max-width: 1280px;
+/* Genel Sifirlama */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+/* Navigasyon & Header */
+header {
+  background-color: #2c3e50;
+  color: white;
+  padding: 1rem 0;
+}
+
+header h1 {
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav a:hover, nav a:focus {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 1.5rem;
+}
+
+/* Bolumler */
+section {
+  padding: 3rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+h2 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: #34495e;
+}
+
+/* Proje Kartlari */
+article {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 1rem;
+  border-radius: 4px;
+}
+
+figure {
+  margin-bottom: 1rem;
+}
+
+/* Skip link: normalde gizli, Tab ile gorunur */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: #1E3A8A;
+  color: white;
+  padding: 8px 16px;
+  z-index: 100;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus gostergesi -- ASLA kaldirma */
+:focus {
+  outline: 2px solid #2563EB;
+  outline-offset: 2px;
+}
+
+/* Form stilleri */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+fieldset {
+  padding: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+}
+
+legend {
+  font-weight: bold;
+  padding: 0 0.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button[type="submit"] {
+  background-color: #2563EB;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+button[type="submit"]:hover {
+  background-color: #1d4ed8;
+}
+
+.error-msg {
+  color: #d32f2f;
+  font-size: 0.85rem;
+  display: block;
+  margin-top: 0.25rem;
+  min-height: 1.25rem; /* Ayrılan sabit boşluk */
+}
+
+/* Footer */
+footer {
   text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  padding: 2rem 0;
+  background-color: #f9f9f9;
+  color: #666;
+  margin-top: 2rem;
 }
