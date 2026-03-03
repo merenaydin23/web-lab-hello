@@ -1,3 +1,4 @@
+import './styles/tokens.css'
 import './App.css'
 
 function App() {
@@ -8,8 +9,8 @@ function App() {
       </a>
       
       <header>
-        <div className="container">
-          <h1>Ahmet Yilmaz - Kisisel Portfolyo</h1>
+        <div className="container header-inner">
+          <span className="site-title">Muhammed Eren Aydin</span>
           <nav aria-label="Ana navigasyon">
             <ul>
               <li><a href="#hakkimda">Hakkimda</a></li>
@@ -20,42 +21,70 @@ function App() {
         </div>
       </header>
 
-      <main id="main-content" className="container">
+      <main id="main-content">
         
-        <section id="hakkimda">
+        <section id="hakkimda" className="container">
           <h2>Hakkimda</h2>
-          <figure>
-            <img src="https://via.placeholder.com/150" alt="Muhammed Eren Aydin'in vesikalik fotografi" />
-            <figcaption>Muhammed Eren Aydin</figcaption>
-          </figure>
-          <p>Merhaba! Web geliştirme dünyasına ilk adımımı atıyorum. Öğrenmeye ve gelişmeye açık bir yazılım meraklısıyım.</p>
-          <h3>Kullandigim Teknolojiler</h3>
-          <ul>
-            <li>HTML5 (Semantik)</li>
-            <li>CSS3 / Responsive Tasarım</li>
-            <li>JavaScript & TypeScript</li>
-            <li>React & Vite</li>
-          </ul>
+          <div className="about-content">
+            <figure>
+              <img src="https://via.placeholder.com/200" alt="Muhammed Eren Aydin'in vesikalik fotografi" />
+              <figcaption>Muhammed Eren Aydin</figcaption>
+            </figure>
+            <div>
+              <p><strong>Ad Soyad:</strong> Muhammed Eren Aydin</p>
+              <p><strong>Ogrenci No:</strong> 220202023</p>
+              <p>Merhaba! Web geliştirme dünyasına ilk adımımı atıyorum. Öğrenmeye ve gelişmeye açık bir yazılım meraklısıyım.</p>
+              <h3>Kullandigim Teknolojiler</h3>
+              <ul className="skill-tags" role="list" aria-label="Beceri etiketleri">
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+                <li>TypeScript</li>
+                <li>React</li>
+                <li>Vite</li>
+                <li>Git</li>
+              </ul>
+            </div>
+          </div>
         </section>
 
-        <section id="projeler">
+        <section id="projeler" className="container">
           <h2>Projelerim</h2>
-          <article>
-            <h3>E-Ticaret Sitesi</h3>
-            <p>Modern ve kullanıcı dostu bir alışveriş platformu prototipi. Sepet yönetimi ve ürün filtreleme özellikleri barındırır.</p>
-            <p><strong>Teknolojiler:</strong> React, Node.js, MongoDB</p>
-            <img src="https://via.placeholder.com/400x200" alt="E-ticaret sitesi urun listeleme ekrani ekran goruntusu" />
-          </article>
-          
-          <article>
-            <h3>Blog Uygulamasi</h3>
-            <p>Kullanıcıların makale okuyabildiği ve kendi yazılarını paylaşabildiği içerik platformu.</p>
-            <p><strong>Teknolojiler:</strong> Next.js, Tailwind CSS</p>
-            <img src="https://via.placeholder.com/400x200" alt="Blog uygulamasi anasayfa ve makale goruntuleme arayuzu" />
-          </article>
+          <div className="project-grid">
+            <article className="project-card">
+              <img src="https://via.placeholder.com/400x200" alt="E-ticaret sitesi urun listeleme ekrani ekran goruntusu" />
+              <h3>E-Ticaret Sitesi</h3>
+              <p>Modern ve kullanıcı dostu bir alışveriş platformu prototipi. Sepet yönetimi ve ürün filtreleme özellikleri barındırır.</p>
+              <ul className="skill-tags">
+                <li>React</li>
+                <li>Node.js</li>
+                <li>MongoDB</li>
+              </ul>
+            </article>
+            
+            <article className="project-card">
+              <img src="https://via.placeholder.com/400x200" alt="Blog uygulamasi anasayfa ve makale goruntuleme arayuzu" />
+              <h3>Blog Uygulamasi</h3>
+              <p>Kullanıcıların makale okuyabildiği ve kendi yazılarını paylaşabildiği içerik platformu.</p>
+              <ul className="skill-tags">
+                <li>TypeScript</li>
+                <li>Next.js</li>
+              </ul>
+            </article>
+
+            <article className="project-card">
+              <img src="https://via.placeholder.com/400x200" alt="Hava durumu uygulamasi arayuzu" />
+              <h3>Hava Durumu Uygulamasi</h3>
+              <p>OpenWeather API ile anlık hava durumu bilgisi sunan uygulama.</p>
+              <ul className="skill-tags">
+                <li>JavaScript</li>
+                <li>API</li>
+              </ul>
+            </article>
+          </div>
         </section>
 
-        <section id="iletisim">
+        <section id="iletisim" className="container">
           <h2>Iletisim</h2>
           <form action="#" method="POST" noValidate>
             <fieldset>
@@ -63,37 +92,19 @@ function App() {
 
               <div className="form-group">
                 <label htmlFor="name">Ad Soyad:</label>
-                <input 
-                  type="text" 
-                  id="name" 
-                  name="name" 
-                  required 
-                  minLength={2} 
-                  aria-describedby="name-error" 
-                />
+                <input type="text" id="name" name="name" required minLength={2} aria-describedby="name-error" />
                 <small id="name-error" className="error-msg" role="alert"></small>
               </div>
 
               <div className="form-group">
                 <label htmlFor="email">E-posta:</label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  name="email" 
-                  required 
-                  aria-describedby="email-error" 
-                />
+                <input type="email" id="email" name="email" required aria-describedby="email-error" />
                 <small id="email-error" className="error-msg" role="alert"></small>
               </div>
 
               <div className="form-group">
                 <label htmlFor="subject">Konu:</label>
-                <select 
-                  id="subject" 
-                  name="subject" 
-                  required 
-                  aria-describedby="subject-error"
-                >
+                <select id="subject" name="subject" required aria-describedby="subject-error">
                   <option value="">-- Seciniz --</option>
                   <option value="is">Is Teklifi</option>
                   <option value="soru">Soru</option>
@@ -104,14 +115,7 @@ function App() {
 
               <div className="form-group">
                 <label htmlFor="message">Mesajiniz:</label>
-                <textarea 
-                  id="message" 
-                  name="message" 
-                  rows={5} 
-                  required 
-                  minLength={10} 
-                  aria-describedby="message-error"
-                ></textarea>
+                <textarea id="message" name="message" rows={5} required minLength={10} aria-describedby="message-error"></textarea>
                 <small id="message-error" className="error-msg" role="alert"></small>
               </div>
 
