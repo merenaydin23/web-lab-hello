@@ -1,5 +1,9 @@
-import "./styles/tokens.css";
-import "./App.css";
+import { useState, useEffect } from "react";
+import Button from "./components/Button";
+import Input from "./components/Input";
+import Card from "./components/Card";
+import UIKit from "./pages/UIKit";
+import "./index.css";
 
 const SKILLS = [
   "HTML5",
@@ -7,7 +11,7 @@ const SKILLS = [
   "JavaScript",
   "TypeScript",
   "React",
-  "Vite",
+  "Tailwind",
   "Git",
 ] as const;
 
@@ -24,145 +28,118 @@ type Project = {
 const PROJECTS: readonly Project[] = [
   {
     title: "AY-KA Hali Saha Otomasyonu",
-    description:
-      "Kullanıcıların tarih, saat, saha türü ve boyutuna göre boş sahaları arayıp anında rezervasyon yapmasını sağlayan otomasyon sistemi. Personel; sahaları ekleyip kapasite, fiyat ve müsaitlik saatlerini güncelleyebilir.",
-    tags: ["C#", "DevExpress", "SQL Server", "WinForms"],
-    image: {
-      src: "https://via.placeholder.com/400x200",
-      alt: "AY-KA Hali Saha Otomasyonu proje gorseli (temsilidir)",
-    },
+    description: "Kullanıcıların tarih, saat, saha türü ve boyutuna göre boş sahaları arayıp anında rezervasyon yapmasını sağlayan otomasyon sistemi.",
+    tags: ["C#", "SQL Server"],
+    image: { src: "https://via.placeholder.com/400x200", alt: "AY-KA Hali Saha Otomasyonu" },
   },
   {
     title: "AI-Powered Academic Text Data Generator",
-    description:
-      "Cohere API ile belirli bir konu hakkında uzun, detaylı ve özgün Türkçe akademik metinler üreten Python uygulaması. Metin analizi, model eğitimi ve test süreçleri için sentetik veri üretir ve çıktıları .txt olarak kaydeder.",
-    tags: ["Python", "Cohere API", "NLP", "AI", "Data Generation"],
-    image: {
-      src: "https://via.placeholder.com/400x200",
-      alt: "AI-Powered Academic Text Data Generator proje gorseli (temsilidir)",
-    },
+    description: "Cohere API ile belirli bir konu hakkında özgün akademik metinler üreten Python uygulaması.",
+    tags: ["Python", "AI", "NLP"],
+    image: { src: "https://via.placeholder.com/400x200", alt: "AI Data Generator" },
   },
   {
     title: "PDF Translator",
-    description:
-      "İngilizce veya farklı dillerdeki PDF dosyalarını otomatik olarak Türkçeye çeviren Python uygulaması. LibreTranslate ile metni parçalara böler, çevirir ve birleştirir.",
-    tags: ["Python", "LibreTranslate", "PDF Processing", "Translation"],
-    image: {
-      src: "https://via.placeholder.com/400x200",
-      alt: "PDF Translator proje gorseli (temsilidir)",
-    },
-  },
-  {
-    title: "Nesne Tabanlı Programlama – Haftalık Projeler",
-    description:
-      "OOP kavramlarını pekiştirmek için hazırlanmış haftalık proje koleksiyonu. Araba Yarışı, Flappy Bird, XOX, Mayın Tarlası, Hangman ve Quiz Show gibi oyunlar içerir.",
-    tags: ["C#", ".NET Framework", "Windows Forms", "OOP"],
-    image: {
-      src: "https://via.placeholder.com/400x200",
-      alt: "Nesne Tabanlı Programlama haftalik projeler koleksiyonu gorseli (temsilidir)",
-    },
-  },
-  {
-    title: "QuickLIT",
-    description:
-      "Scopus API ile akademik literatür araması ve Cohere AI ile PDF özetleme sunan, araştırmacılar için zaman kazandıran yapay zekâ destekli platform. Flask tabanlı arayüz ve Node.js servisleri ile çalışır.",
-    tags: ["Python", "Flask", "Node.js", "Scopus API", "Cohere AI", "Firebase"],
-    image: {
-      src: "https://via.placeholder.com/400x200",
-      alt: "QuickLIT proje gorseli (temsilidir)",
-    },
-  },
-  {
-    title: "Data Structures & Algorithms – Learning Repository",
-    description:
-      "Veri yapıları ve algoritmalar üzerine öğrendiğim konuları; arama, sıralama ve temel algoritmalarla birlikte düzenli olarak paylaştığım çalışma deposu.",
-    tags: ["Python", "Java", "Data Structures", "Algorithms"],
-    image: {
-      src: "https://via.placeholder.com/400x200",
-      alt: "Data Structures & Algorithms learning repository gorseli (temsilidir)",
-    },
-  },
-  {
-    title: "Veri Bilimi ve Makine Öğrenmesi Kampı",
-    description:
-      "Teorik bilgiyi pratik uygulamalarla birleştiren kapsamlı öğrenme deposu. Unsupervised Learning, model kaydetme/yayınlama ve Kaggle projeleri gibi konuları içerir.",
-    tags: [
-      "Python",
-      "Machine Learning",
-      "Data Science",
-      "Unsupervised Learning",
-      "Kaggle",
-      "Model Deployment",
-    ],
-    image: {
-      src: "https://via.placeholder.com/400x200",
-      alt: "Veri Bilimi ve Makine Ogrenmesi kampi depo gorseli (temsilidir)",
-    },
-  },
-  {
-    title: "Akademik Makale Özetleme Sistemi – AI Powered",
-    description:
-      "PDF.js ile tarayıcıda PDF okuma, kaynakça temizleme, Türkçe→İngilizce çeviri ve iki farklı LLM ile kısa/uzun özet üretimi sunan sistem. Gerçek zamanlı özet görüntüleme (SSE) ve modern UI içerir.",
-    tags: [
-      "Python",
-      "FastAPI",
-      "JavaScript",
-      "PDF.js",
-      "OpenRouter API",
-      "LLM",
-      "Streaming",
-    ],
-    image: {
-      src: "https://via.placeholder.com/400x200",
-      alt: "Akademik Makale Ozetleme Sistemi proje gorseli (temsilidir)",
-    },
+    description: "İngilizce PDF dosyalarını otomatik olarak Türkçeye çeviren Python uygulaması.",
+    tags: ["Python", "LibreTranslate", "PDF Processing"],
+    image: { src: "https://via.placeholder.com/400x200", alt: "PDF Translator" },
   },
 ] as const;
 
-function ProjectCard({ project }: { project: Project }) {
-  return (
-    <article className="project-card">
-      <img
-        src={project.image.src}
-        alt={project.image.alt}
-        loading="lazy"
-        decoding="async"
-      />
-      <h3>{project.title}</h3>
-      <p>{project.description}</p>
-      <ul
-        className="skill-tags"
-        role="list"
-        aria-label={`${project.title} teknolojileri`}
-      >
-        {project.tags.map((tag) => (
-          <li key={tag}>{tag}</li>
-        ))}
-      </ul>
-    </article>
-  );
-}
-
 function App() {
+  const [showUIKit, setShowUIKit] = useState(false);
+
+  useEffect(() => {
+    // Basic dark mode setup depending on OS initially
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.classList.add('dark');
+    }
+  }, []);
+
+  const toggleDarkMode = () => {
+    document.documentElement.classList.toggle('dark');
+  };
+
+  if (showUIKit) {
+    return (
+      <>
+        <button
+          onClick={() => setShowUIKit(false)}
+          className="fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded-lg shadow-lg hover:bg-blue-700 transition"
+        >
+          Portföye Dön
+        </button>
+        <button
+          onClick={toggleDarkMode}
+          className="fixed top-4 right-4 z-50 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 p-2 rounded-full shadow-lg hover:scale-110 transition-transform"
+          aria-label="Tema degistir"
+        >
+          <span className="dark:hidden">&#9790;</span>
+          <span className="hidden dark:inline">&#9728;</span>
+        </button>
+        <UIKit />
+      </>
+    );
+  }
+
   return (
-    <>
-      <a href="#main-content" className="skip-link">
+    <div className="bg-white dark:bg-gray-950 min-h-screen text-gray-900 dark:text-gray-100 transition-colors duration-200">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 bg-blue-800 text-white p-2 z-50"
+      >
         Ana icerige atla
       </a>
 
-      <header>
-        <div className="container header-inner">
-          <span className="site-title">Muhammed Eren Aydın</span>
+      {/* Dark mode toggle */}
+      <button
+        onClick={toggleDarkMode}
+        className="fixed bottom-4 right-4 sm:top-4 sm:bottom-auto z-50 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 p-2 rounded-full shadow-lg hover:scale-110 transition-transform"
+        aria-label="Tema degistir"
+      >
+        <span className="dark:hidden">&#9790;</span>
+        <span className="hidden dark:inline">&#9728;</span>
+      </button>
+
+      {/* Header */}
+      <header className="sticky top-0 z-40 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shadow-sm">
+        <div className="max-w-6xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
+          <h1 className="text-xl font-bold text-blue-800 dark:text-blue-300">
+            Muhammed Eren Aydın
+          </h1>
           <nav aria-label="Ana navigasyon">
-            <ul>
+            <ul className="flex flex-wrap gap-2">
               <li>
-                <a href="#hakkimda">Hakkimda</a>
+                <a
+                  href="#hakkimda"
+                  className="px-3 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-gray-800 transition-colors"
+                >
+                  Hakkimda
+                </a>
               </li>
               <li>
-                <a href="#projeler">Projeler</a>
+                <a
+                  href="#projeler"
+                  className="px-3 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-gray-800 transition-colors"
+                >
+                  Projeler
+                </a>
               </li>
               <li>
-                <a href="#iletisim">Iletisim</a>
+                <a
+                  href="#iletisim"
+                  className="px-3 py-1 rounded-md text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-gray-800 transition-colors"
+                >
+                  Iletisim
+                </a>
+              </li>
+              <li>
+                <button
+                  onClick={() => setShowUIKit(true)}
+                  className="px-3 py-1 rounded-md text-purple-700 dark:text-purple-300 hover:bg-purple-100 dark:hover:bg-gray-800 transition-colors font-medium"
+                >
+                  UI Kit
+                </button>
               </li>
             </ul>
           </nav>
@@ -170,157 +147,101 @@ function App() {
       </header>
 
       <main id="main-content">
-        <section id="hakkimda" className="container">
-          <h2>Hakkimda</h2>
-          <div className="about-content">
-            <figure>
+        {/* Hakkimda */}
+        <section id="hakkimda" className="py-16 px-4">
+          <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-8">
+            <figure className="shrink-0">
               <img
-                src="https://www.muhammederenaydın.com/home%20page/profile.jpg"
-                alt="Muhammed Eren Aydın'ın profil fotografi"
-                loading="lazy"
-                decoding="async"
+                src="https://via.placeholder.com/160"
+                alt="Muhammed Eren Aydın vesikalik fotografi"
+                className="w-40 h-40 rounded-full object-cover shadow-lg"
               />
-              <figcaption>Muhammed Eren Aydın</figcaption>
             </figure>
             <div>
-              <p>
-                <strong>Ad Soyad:</strong> Muhammed Eren Aydın
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4 text-center md:text-left">
+                Hakkimda
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed text-center md:text-left">
+                Merhaba! Web geliştirme dünyasına ilk adımımı atıyorum. Öğrenmeye ve gelişmeye açık bir yazılım meraklısıyım.
               </p>
-              <p>
-                <strong>Ogrenci No:</strong> 230541034
-              </p>
-              <p>
-                <strong>E-posta:</strong>{" "}
-                <a href="mailto:230541034@firat.edu.tr">
-                  230541034@firat.edu.tr
-                </a>
-              </p>
-              <p>
-                Merhaba! Web geliştirme dünyasına ilk adımımı atıyorum.
-                Öğrenmeye ve gelişmeye açık bir yazılım meraklısıyım.
-              </p>
-              <h3>Kullandigim Teknolojiler</h3>
-              <ul
-                className="skill-tags"
-                role="list"
-                aria-label="Beceri etiketleri"
-              >
+              <ul className="flex flex-wrap justify-center md:justify-start gap-2">
                 {SKILLS.map((skill) => (
-                  <li key={skill}>{skill}</li>
+                  <li
+                    key={skill}
+                    className="bg-blue-800 dark:bg-blue-900 text-white px-3 py-1 rounded-full text-sm font-medium"
+                  >
+                    {skill}
+                  </li>
                 ))}
               </ul>
             </div>
           </div>
         </section>
 
-        <section id="projeler" className="container">
-          <h2>Projelerim</h2>
-          <div className="project-grid">
-            {PROJECTS.map((project) => (
-              <ProjectCard key={project.title} project={project} />
-            ))}
+        {/* Projeler */}
+        <section id="projeler" className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-10">
+              Projelerim
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {PROJECTS.map((project) => (
+                <Card
+                  key={project.title}
+                  variant="elevated"
+                  title={project.title}
+                  image={project.image.src}
+                  imageAlt={project.image.alt}
+                >
+                  <p className="mb-3 text-sm">{project.description}</p>
+                  <div className="flex flex-wrap gap-1 mt-2">
+                    {project.tags.map((tag) => (
+                      <span key={tag} className="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </Card>
+              ))}
+            </div>
           </div>
-
-          <p className="projects-more">
-            Daha fazlası:{" "}
-            <a
-              href="https://www.muhammederenaydın.com/projects"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Projeler sayfam
-            </a>
-          </p>
         </section>
 
-        <section id="iletisim" className="container">
-          <h2>Iletisim</h2>
-          <form action="#" method="POST" noValidate>
-            <fieldset>
-              <legend>Iletisim Formu</legend>
-
-              <div className="form-group">
-                <label htmlFor="name">Ad Soyad:</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  minLength={2}
-                  aria-describedby="name-error"
-                />
-                <small
-                  id="name-error"
-                  className="error-msg"
-                  role="alert"
-                ></small>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="email">E-posta:</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  aria-describedby="email-error"
-                />
-                <small
-                  id="email-error"
-                  className="error-msg"
-                  role="alert"
-                ></small>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="subject">Konu:</label>
-                <select
-                  id="subject"
-                  name="subject"
-                  required
-                  aria-describedby="subject-error"
+        {/* Iletisim */}
+        <section id="iletisim" className="py-16 px-4">
+          <div className="max-w-lg mx-auto bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md border border-gray-100 dark:border-gray-700">
+            <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-8">
+              Iletisim
+            </h2>
+            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+              <Input id="name" label="Ad Soyad" required />
+              <Input id="email" label="E-posta" type="email" required />
+              <div className="space-y-1">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
                 >
-                  <option value="">-- Seciniz --</option>
-                  <option value="is">Is Teklifi</option>
-                  <option value="soru">Soru</option>
-                  <option value="oneri">Oneri</option>
-                </select>
-                <small
-                  id="subject-error"
-                  className="error-msg"
-                  role="alert"
-                ></small>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="message">Mesajiniz:</label>
+                  Mesajiniz
+                </label>
                 <textarea
                   id="message"
-                  name="message"
                   rows={5}
                   required
-                  minLength={10}
-                  aria-describedby="message-error"
+                  className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:bg-gray-900 dark:text-gray-100 dark:border-gray-600 transition-colors"
                 ></textarea>
-                <small
-                  id="message-error"
-                  className="error-msg"
-                  role="alert"
-                ></small>
               </div>
-
-              <button type="submit">Gonder</button>
-            </fieldset>
-          </form>
+              <Button variant="primary" size="lg" type="submit" className="w-full">
+                Gonder
+              </Button>
+            </form>
+          </div>
         </section>
       </main>
 
-      <footer>
-        <div className="container">
-          <p>&copy; 2025 Muhammed Eren Aydın. Tum haklari saklidir.</p>
-        </div>
+      <footer className="bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 text-center py-6 px-4 text-gray-500 dark:text-gray-400 text-sm transition-colors">
+        <p>&copy; 2025 Muhammed Eren Aydın. Tum haklari saklidir.</p>
       </footer>
-    </>
+    </div>
   );
 }
 
