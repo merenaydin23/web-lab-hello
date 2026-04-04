@@ -108,7 +108,7 @@ export default function ContactForm() {
         </label>
         <select
           id="subject"
-          group-aria-label="Konu filtresi"
+          aria-label="Konu filtresi"
           value={formData.subject}
           onChange={(e) => handleChange("subject", e.target.value)}
           className={`w-full border rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none dark:bg-gray-800 dark:text-white ${
